@@ -328,6 +328,10 @@ public class ScenarioTestBase {
         log.info("BASE_URL>>>>>" + baseUrl);
         log.info("SERVICE URL>>>" + serviceEndpoint);
         log.info("HOST>>>>>" + host);
+        log.info("KEYMANAGERURL>>>>>" + keyManagerURL);
+        log.info("ADMINURL>>>>>" + adminURL);
+        log.info("GATEWAYURL>>>>>" + gatewayHttpsURL);
+
         setKeyStoreProperties();
     }
 
