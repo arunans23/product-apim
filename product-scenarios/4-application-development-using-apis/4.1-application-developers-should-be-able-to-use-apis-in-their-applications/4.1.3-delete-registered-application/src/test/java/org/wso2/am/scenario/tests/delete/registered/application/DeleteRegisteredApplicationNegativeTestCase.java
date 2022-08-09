@@ -44,6 +44,7 @@ public class DeleteRegisteredApplicationNegativeTestCase extends ScenarioTestBas
 
     @BeforeClass(alwaysRun = true)
     public void setEnvironment() throws Exception {
+        log.info("#### SetEnvironment " + this.getClass().getSimpleName());
         if (this.userMode.equals(TestUserMode.SUPER_TENANT_USER)) {
             createUserWithPublisherAndCreatorRole(API_CREATOR_PUBLISHER_USERNAME, API_CREATOR_PUBLISHER_PW,
                     ADMIN_USERNAME, ADMIN_PW);
@@ -100,6 +101,7 @@ public class DeleteRegisteredApplicationNegativeTestCase extends ScenarioTestBas
 
     @AfterClass(alwaysRun = true)
     public void destroy() throws Exception {
+        log.info("#### Destroy " + this.getClass().getSimpleName());
         if (this.userMode.equals(TestUserMode.SUPER_TENANT_USER)) {
             // deleteUser(API_CREATOR_PUBLISHER_USERNAME, ADMIN_USERNAME, ADMIN_PW);
             // deleteUser(API_SUBSCRIBER_USERNAME, ADMIN_USERNAME, ADMIN_PW);

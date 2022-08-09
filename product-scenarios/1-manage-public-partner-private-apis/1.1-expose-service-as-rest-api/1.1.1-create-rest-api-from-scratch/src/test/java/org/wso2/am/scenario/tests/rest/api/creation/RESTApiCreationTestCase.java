@@ -43,7 +43,7 @@ import org.wso2.carbon.automation.engine.context.TestUserMode;
 import org.wso2.carbon.automation.test.utils.http.client.HttpResponse;
 
 public class RESTApiCreationTestCase extends ScenarioTestBase {
-    private static final Log log = LogFactory.getLog(APIRequest.class);
+    private static final Log log = LogFactory.getLog(RESTApiCreationTestCase.class);
 
     private static final String ADMIN_USERNAME = "admin";
     private static final String ADMIN_PW = "admin";
@@ -95,6 +95,7 @@ public class RESTApiCreationTestCase extends ScenarioTestBase {
 
     @BeforeClass(alwaysRun = true)
     public void setEnvironment() throws Exception {
+        log.info("#### SetEnvironment " + this.getClass().getSimpleName());
         if (this.userMode.equals(TestUserMode.SUPER_TENANT_USER)) {
             createUserWithPublisherAndCreatorRole(API_CREATOR_PUBLISHER_USERNAME, API_CREATOR_PUBLISHER_PW,
                     ADMIN_USERNAME, ADMIN_PW);
@@ -256,6 +257,7 @@ public class RESTApiCreationTestCase extends ScenarioTestBase {
 
     @AfterClass(alwaysRun = true)
     public void destroy() throws Exception {
+        log.info("#### Destroy " + this.getClass().getSimpleName());
         for (String apiId : apiIdList) {
             restAPIPublisher.deleteAPI(apiId);
         }

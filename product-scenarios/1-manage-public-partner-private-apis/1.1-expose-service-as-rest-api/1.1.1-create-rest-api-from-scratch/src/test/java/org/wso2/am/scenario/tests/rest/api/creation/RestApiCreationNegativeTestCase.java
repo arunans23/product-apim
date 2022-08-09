@@ -4,6 +4,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -20,6 +22,8 @@ import org.wso2.carbon.automation.test.utils.http.client.HttpResponse;
 
 public class RestApiCreationNegativeTestCase extends ScenarioTestBase {
     private APIRequest apiRequest;
+
+    private static final Log log = LogFactory.getLog(RestApiCreationNegativeTestCase.class);
 
     private static final String ADMIN_USERNAME = "admin";
     private static final String ADMIN_PW = "admin";
@@ -64,6 +68,7 @@ public class RestApiCreationNegativeTestCase extends ScenarioTestBase {
 
     @BeforeClass(alwaysRun = true)
     public void setEnvironment() throws Exception {
+        log.info("#### SetEnvironment " + this.getClass().getSimpleName());
         if (this.userMode.equals(TestUserMode.SUPER_TENANT_USER)) {
             createUserWithPublisherAndCreatorRole(API_CREATOR_PUBLISHER_USERNAME, API_CREATOR_PUBLISHER_PW,
                     ADMIN_USERNAME, ADMIN_PW);
@@ -331,6 +336,7 @@ public class RestApiCreationNegativeTestCase extends ScenarioTestBase {
 
     @AfterClass(alwaysRun = true)
     public void destroy() throws Exception {
+        log.info("#### Destroy " + this.getClass().getSimpleName());
         for (String apiId : apiIdList) {
             restAPIPublisher.deleteAPI(apiId);
         }

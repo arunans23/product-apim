@@ -362,7 +362,7 @@ public class ScenarioTestBase {
         }
     }
 
-    public static void addTenantAndActivate(String domain, String adminUsername, String adminPassword)
+    public void addTenantAndActivate(String domain, String adminUsername, String adminPassword)
             throws APIManagementException {
         TenantManagementServiceClient tenantManagementServiceClient = null;
         try {
@@ -375,6 +375,10 @@ public class ScenarioTestBase {
                 tenantManagementServiceClient.activateTenant(domain);
             }
             isActivated(domain);
+            log.info("##### Forcing tenant login, domain: " + domain + ", adminUsername: " + adminUsername);
+            // login tenant
+            login(serviceEndpoint, adminUsername, adminPassword);
+            Thread.sleep(5000);
         } catch (Exception e) {
             throw new APIManagementException("Unable to add new tenant and activate " + domain, e);
         }
