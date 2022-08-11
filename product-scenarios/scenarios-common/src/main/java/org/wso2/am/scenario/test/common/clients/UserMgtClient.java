@@ -36,6 +36,8 @@ public class UserMgtClient {
     public UserMgtClient(String backendURL, String sessionCookie) throws AxisFault {
         String endPoint = backendURL + serviceName;
         remoteUserStoreManagerServiceStub = new RemoteUserStoreManagerServiceStub(endPoint);
+        remoteUserStoreManagerServiceStub._getServiceClient().getOptions().setProperty(
+                org.apache.axis2.transport.http.HTTPConstants.CHUNKED, Boolean.FALSE);
         AuthenticateStubUtil.authenticateStub(sessionCookie, remoteUserStoreManagerServiceStub);
     }
 
