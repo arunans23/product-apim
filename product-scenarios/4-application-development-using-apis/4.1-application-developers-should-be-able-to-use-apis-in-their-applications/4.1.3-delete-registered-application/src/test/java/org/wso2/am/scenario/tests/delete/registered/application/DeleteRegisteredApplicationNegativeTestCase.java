@@ -15,7 +15,6 @@ import org.wso2.am.scenario.test.common.ScenarioTestConstants;
 import org.wso2.carbon.automation.engine.context.TestUserMode;
 import org.wso2.carbon.automation.test.utils.http.client.HttpResponse;
 
-import static org.osgi.service.application.ApplicationDescriptor.APPLICATION_DESCRIPTION;
 import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertNotNull;
 import static org.testng.Assert.assertNull;
@@ -79,6 +78,7 @@ public class DeleteRegisteredApplicationNegativeTestCase extends ScenarioTestBas
 
     @Test(description = "4.1.3.7", dependsOnMethods = {"testUnownedDeleteApplication"})
     public void testDeleteApplicationWithSameName() throws Exception {
+        final String APPLICATION_DESCRIPTION = "application.description";
         RestAPIStoreImpl restAPIStoreNew = new RestAPIStoreImpl(
                 SUBSCRIBER2_USERNAME, SUBSCRIBER2_PW, storeContext.getContextTenant().getDomain(), storeURLHttps);
         HttpResponse applicationResponse = restAPIStoreNew.createApplication(APPLICATION_NAME, APPLICATION_DESCRIPTION,
