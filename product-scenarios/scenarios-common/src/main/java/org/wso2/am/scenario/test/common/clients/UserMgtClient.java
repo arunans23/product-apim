@@ -38,6 +38,7 @@ public class UserMgtClient {
         remoteUserStoreManagerServiceStub = new RemoteUserStoreManagerServiceStub(endPoint);
         remoteUserStoreManagerServiceStub._getServiceClient().getOptions().setProperty(
                 org.apache.axis2.transport.http.HTTPConstants.CHUNKED, Boolean.FALSE);
+        remoteUserStoreManagerServiceStub._getServiceClient().getOptions().setTimeOutInMilliSeconds(20000);
         AuthenticateStubUtil.authenticateStub(sessionCookie, remoteUserStoreManagerServiceStub);
     }
 
