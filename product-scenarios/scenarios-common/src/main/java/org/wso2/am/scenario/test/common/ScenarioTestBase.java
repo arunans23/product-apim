@@ -348,6 +348,9 @@ public class ScenarioTestBase {
         log.info("BASE_URL>>>>>" + baseUrl);
         log.info("SERVICE URL>>>" + serviceEndpoint);
         log.info("HOST>>>>>" + host);
+        log.info("KEYMANAGERURL>>>>>" + keyManagerURL);
+        log.info("ADMINURL>>>>>" + adminURL);
+        log.info("GATEWAYURL>>>>>" + gatewayHttpsURL);
         setKeyStoreProperties();
     }
 
@@ -384,6 +387,8 @@ public class ScenarioTestBase {
 
     public static void addTenantAndActivate(String domain, String adminUsername, String adminPassword)
             throws APIManagementException {
+        log.info("##### Inside addTenantAndActivate for domain: " + domain + ", admin: " + adminUsername + ", at " +
+                new java.text.SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new java.util.Date()));
         TenantManagementServiceClient tenantManagementServiceClient = null;
         try {
             tenantManagementServiceClient = getTenantManagementServiceClient();
@@ -402,6 +407,8 @@ public class ScenarioTestBase {
 
     public static void deactivateAndDeleteTenant(String domain)
             throws APIManagementException {
+        log.info("##### Inside deactivateAndDeleteTenant for domain: " + domain + ", at " +
+                new java.text.SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new java.util.Date()));
         TenantManagementServiceClient tenantManagementServiceClient;
         try {
             tenantManagementServiceClient = getTenantManagementServiceClient();
@@ -417,6 +424,8 @@ public class ScenarioTestBase {
     }
 
     public static boolean isActivated(String domain) throws APIManagementException {
+        log.info("##### Inside isActivated for domain:" + domain + ", at " +
+                new java.text.SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new java.util.Date()));
         TenantManagementServiceClient tenantManagementServiceClient;
         try {
             tenantManagementServiceClient = getTenantManagementServiceClient();
@@ -490,6 +499,8 @@ public class ScenarioTestBase {
     }
 
     protected String login(String serviceEndpoint, String username, String password) throws APIManagementException {
+        log.info("##### Inside login for username:" + username + ", at " +
+                new java.text.SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new java.util.Date()));
         AuthenticatorClient authenticatorClient = null;
 
         try {
@@ -537,6 +548,8 @@ public class ScenarioTestBase {
 
     public static void createUserWithPublisherAndCreatorRole(String username, String password, String adminUsername,
                                                              String adminPassword) throws APIManagementException {
+        log.info("##### Inside createUserWithPublisherAndCreatorRole for username:" + username + ", at " +
+                new java.text.SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new java.util.Date()));
         UserMgtClient userMgtClient;
         try {
             userMgtClient = getRemoteUserMgtClient(adminUsername, adminPassword);
@@ -567,6 +580,8 @@ public class ScenarioTestBase {
     public static void createUserWithSubscriberRole(String username, String password, String adminUsername,
                                                     String adminPassword)
             throws APIManagementException {
+        log.info("##### Inside createUserWithSubscriberRole for username:" + username + ", at " +
+                new java.text.SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new java.util.Date()));
         UserMgtClient userMgtClient;
         try {
             userMgtClient = getRemoteUserMgtClient(adminUsername, adminPassword);
@@ -581,6 +596,8 @@ public class ScenarioTestBase {
 
     public void createUser(String username, String password, String[] roleList, String adminUsername,
                            String adminPassword) throws APIManagementException {
+        log.info("##### Inside createUser for username:" + username + ", at " +
+                new java.text.SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new java.util.Date()));
         UserMgtClient userMgtClient;
         try {
             userMgtClient = getRemoteUserMgtClient(adminUsername, adminPassword);
@@ -631,7 +648,8 @@ public class ScenarioTestBase {
     }
 
     public void deleteUser(String username, String adminUsername, String adminPassword) throws APIManagementException {
-
+        log.info("##### Inside deleteUser for username: " + username + ", adminUsername: " + adminUsername + ", at " +
+                new java.text.SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new java.util.Date()));
         UserMgtClient userMgtClient;
         try {
             userMgtClient = getRemoteUserMgtClient(adminUsername, adminPassword);
