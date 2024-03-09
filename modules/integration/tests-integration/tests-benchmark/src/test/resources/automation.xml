@@ -338,6 +338,7 @@
                     <name>org.wso2.am.integration.tests.util.APIMCarbonServerExtension</name>
                     <parameter name="-DportOffset" value="500"/>
                     <parameter name="-DenableCorrelationLogs" value="true"/>
+                    <parameter name="executables" value="diagnostics-tool/bin/diagnostics.sh"></parameter>
                <!--                    <parameter name="-Dsetup" value="true"/>-->
                     <!--<parameter name="cmdArg" value="debug 5005"/>-->
                 </class>
